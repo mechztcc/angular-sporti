@@ -55,25 +55,54 @@
       <div class="flex justify-between bg-green-200 px-3 py-1">
         <h2 class="text-xl text-green-600">Suas ultimas fiscalizações</h2>
 
+
         <div class="flex">
-          <button
-          (click)="onHandleVisibility({ type: 'last' })"
-            class="hover:bg-green-100 rounded cursor-pointer px-1 py-1 mx-2"
+          <app-tooltip-button
+            [label]="!isShowLast ? 'Expandir' : 'Recolher'"
+            (pressed)="onHandleVisibility({ type: 'last' })"
           >
             <fa-icon [icon]="isShowLast ? icons.down : icons.up" />
-          </button>
+          </app-tooltip-button>
 
-          <button class="hover:bg-green-100 rounded cursor-pointer px-2 py-1">
+          <app-tooltip-button [label]="'Atualizar'" (pressed)="store.onList()">
+            <fa-icon [icon]="icons.load" />
+          </app-tooltip-button>
+
+          <app-tooltip-button [label]="'Fechar'">
             <fa-icon [icon]="icons.close" />
-          </button>
+          </app-tooltip-button>
         </div>
       </div>
-      @for (item of store.state.lastSupervisions(); track $index) {
-      <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowLast }"/>
+
+
+      @if(store.state.isLoading) {
+      <div class="flex flex-col items-center justify-center my-4">
+        <fa-icon [icon]="icons.load" />
+        <span class="text-center text-zinc-700">Buscando informações...</span>
+      </div>
+      } 
+      
+      @if(!store.state.hasLastSupervisions) {
+      <div class="flex flex-col items-center justify-center my-4">
+        <span class="text-center text-zinc-700">
+          Nenhuma informação encontrada...
+        </span>
+      </div>
+      } 
+
+      @if(!store.state.isLoading && store.state.hasLastSupervisions) { 
+        @for (item of store.state.lastSupervisions(); track $index) {
+          <app-home-supervision-card
+            [data]="item"
+            [ngClass]="{ hidden: !isShowLast }"
+          />
+        }
       }
+
+
+
     </div>
   </div>
-
 
   <div class="col-span-1">
     <div class="flex flex-col bg-zinc-50 mx-3 my-3">
@@ -81,43 +110,46 @@
         <h2 class="text-xl text-teal-600">Suas próximas fiscalizações</h2>
 
         <div class="flex">
-          <button
-          (click)="onHandleVisibility({ type: 'next' })"
-            class="hover:bg-teal-100 rounded cursor-pointer px-1 py-1 mx-2"
+          <app-tooltip-button
+            [label]="!isShowNext ? 'Expandir' : 'Recolher'"
+            (pressed)="onHandleVisibility({ type: 'next' })"
           >
             <fa-icon [icon]="isShowNext ? icons.down : icons.up" />
-          </button>
+          </app-tooltip-button>
 
-          <button class="hover:bg-teal-100 rounded cursor-pointer px-2 py-1" (click)="store.onList()">
+          <app-tooltip-button [label]="'Atualizar'" (pressed)="store.onList()">
             <fa-icon [icon]="icons.load" />
-          </button>
+          </app-tooltip-button>
 
-          <button class="hover:bg-teal-100 rounded cursor-pointer px-2 py-1">
+          <app-tooltip-button [label]="'Fechar'">
             <fa-icon [icon]="icons.close" />
-          </button>
+          </app-tooltip-button>
         </div>
       </div>
 
       @if(store.state.isLoading) {
-        <div class="flex flex-col items-center justify-center my-4">
-          <fa-icon [icon]="icons.load" />
-          <span class="text-center text-zinc-700">Buscando informações...</span>
-        </div>
-      }
-
-      @if(!store.state.hasNextSupervisions) {
-        <div class="flex flex-col items-center justify-center my-4">
-          <span class="text-center text-zinc-700">Nenhuma informação encontrada...</span>
-        </div>
-      }
-
-      @if(!store.state.isLoading && store.state.hasNextSupervisions) {
-        @for (item of store.state.nextSupervisions(); track $index) {
-          <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowNext }" />
-        }
-      }
-
+      <div class="flex flex-col items-center justify-center my-4">
+        <fa-icon [icon]="icons.load" />
+        <span class="text-center text-zinc-700">Buscando informações...</span>
+      </div>
+      } 
       
+      @if(!store.state.hasNextSupervisions) {
+      <div class="flex flex-col items-center justify-center my-4">
+        <span class="text-center text-zinc-700">
+          Nenhuma informação encontrada...
+        </span>
+      </div>
+      } 
+
+      @if(!store.state.isLoading && store.state.hasNextSupervisions) { 
+        @for(item of store.state.nextSupervisions(); track $index) {
+          <app-home-supervision-card
+            [data]="item"
+            [ngClass]="{ hidden: !isShowNext }"
+          />
+        } 
+      }
     </div>
   </div>
 </div>

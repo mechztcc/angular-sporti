@@ -16,3 +16,13 @@
   background-color: oklch(77.7% 0.152 181.912) !important;
   border-color: oklch(77.7% 0.152 181.912) !important;
 }
+
+
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

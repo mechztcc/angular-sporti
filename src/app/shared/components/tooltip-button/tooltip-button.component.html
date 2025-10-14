@@ -1,0 +1,9 @@
+<button (click)="onClick()" type="button" class="bg-zinc-100 px-2 mx-1 py-1 z-1 cursor-pointer hover:opacity-80  rounded relative group">
+  <ng-content #prepend></ng-content>
+
+  <span
+    class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gradient-to-r from-zinc-700 to-zinc-900 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition whitespace-nowrap"
+  >
+    {{ label() }}
+  </span>
+</button>

@@ -19,6 +19,7 @@ import { HomeGaugeChartComponent } from '../../components/home-gauge-chart/home-
 import { HomeSupervisionCardComponent } from '../../components/home-supervision-card/home-supervision-card.component';
 import { ISupervision } from '../../shared/interfaces/supervision.interface';
 import { HomeStore } from '../../shared/stores/home-store.service';
+import { TooltipButtonComponent } from '../../../../shared/components/tooltip-button/tooltip-button.component';
 
 interface Cards {
   title: string;
@@ -40,6 +41,7 @@ interface Visibility {
     HomePieChartComponent,
     HomeGaugeChartComponent,
     HomeSupervisionCardComponent,
+    TooltipButtonComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
