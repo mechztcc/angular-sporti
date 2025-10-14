@@ -48,3 +48,52 @@
     </div>
   </div>
 </div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2">
+  <div class="col-span-1">
+    <div class="flex flex-col bg-zinc-50 mx-3 my-3">
+      <div class="flex justify-between bg-green-200 px-3 py-1">
+        <h2 class="text-xl text-green-600">Suas ultimas fiscalizações</h2>
+
+        <div class="flex">
+          <button
+            class="hover:bg-green-100 rounded cursor-pointer px-1 py-1 mx-2"
+          >
+            <fa-icon [icon]="icons.down" />
+          </button>
+
+          <button class="hover:bg-green-100 rounded cursor-pointer px-2 py-1">
+            <fa-icon [icon]="icons.close" />
+          </button>
+        </div>
+      </div>
+      @for (item of lastSupervisions; track $index) {
+      <app-home-supervision-card [data]="item" />
+      }
+    </div>
+  </div>
+
+
+  <div class="col-span-1">
+    <div class="flex flex-col bg-zinc-50 mx-3 my-3">
+      <div class="flex justify-between bg-teal-200 px-3 py-1">
+        <h2 class="text-xl text-teal-600">Suas próximas fiscalizações</h2>
+
+        <div class="flex">
+          <button
+            class="hover:bg-teal-100 rounded cursor-pointer px-1 py-1 mx-2"
+          >
+            <fa-icon [icon]="icons.down" />
+          </button>
+
+          <button class="hover:bg-teal-100 rounded cursor-pointer px-2 py-1">
+            <fa-icon [icon]="icons.close" />
+          </button>
+        </div>
+      </div>
+      @for (item of nextSupervisions; track $index) {
+      <app-home-supervision-card [data]="item" />
+      }
+    </div>
+  </div>
+</div>
