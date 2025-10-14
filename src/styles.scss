@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+.flatpickr-day.selected {
+  background-color: oklch(21% 0.006 285.885) !important;
+  border-color: oklch(21% 0.006 285.885) !important;
+}
+
+.flatpickr-day.endRange:hover,
+.flatpickr-day.endRange {
+  background-color: oklch(21% 0.006 285.885) !important;
+  border-color: oklch(21% 0.006 285.885) !important;
+}

@@ -1,0 +1,15 @@
+<div class="flex flex-col w-full">
+  <div class="flex items-center bg-zinc-50  w-full bg-white">
+    <fa-icon [icon]="icons.clock" class="mx-3" />
+    <input
+      class="py-2 px-2 w-full outline-none text-zinc-500 bg-zinc-50"
+      type="text"
+      placeholder="Selecione o período"
+      mwlFlatpickr
+      [(ngModel)]="selectedDate"
+      [altInput]="true"
+      [convertModelValue]="true"
+      [options]="dateRangeOptions"
+    />
+  </div>
+</div>

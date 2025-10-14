@@ -1,8 +1,17 @@
-import { TitleCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome, faChartSimple, faCog, IconDefinition, faEnvelope, faMapPin, faList, faPenClip, faCrow, faCrown } from '@fortawesome/free-solid-svg-icons';
-import { InputToggleSwitchComponent } from "../input-toggle-switch/input-toggle-switch.component";
+import {
+  faChartSimple,
+  faCog,
+  faCrown,
+  faEnvelope,
+  faHome,
+  faList,
+  faMapPin,
+  faPenClip,
+  IconDefinition
+} from '@fortawesome/free-solid-svg-icons';
+import { InputToggleSwitchComponent } from '../input-toggle-switch/input-toggle-switch.component';
 
 interface SidebarItem {
   label: string;
@@ -12,13 +21,13 @@ interface SidebarItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [TitleCasePipe, FontAwesomeModule, InputToggleSwitchComponent],
+  imports: [FontAwesomeModule, InputToggleSwitchComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
   icons: any = {
-    profile: faCrown
+    profile: faCrown,
   };
   items: SidebarItem[] = [
     {
