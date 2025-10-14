@@ -9,9 +9,12 @@ import {
   faList,
   faMapPin,
   faPenClip,
-  IconDefinition
+  IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { InputToggleSwitchComponent } from '../input-toggle-switch/input-toggle-switch.component';
+import { SidebarStore } from '../../services/sidebar-store.service';
+import { NgClass } from '@angular/common';
+
 
 interface SidebarItem {
   label: string;
@@ -21,7 +24,7 @@ interface SidebarItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [FontAwesomeModule, InputToggleSwitchComponent],
+  imports: [FontAwesomeModule, InputToggleSwitchComponent, NgClass],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -60,4 +63,8 @@ export class SidebarComponent {
       icon: faMapPin,
     },
   ];
+
+  constructor(public store: SidebarStore) {
+
+  }
 }

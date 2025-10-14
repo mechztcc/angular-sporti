@@ -2,7 +2,7 @@
 
 <div class="grid grid-cols-1 lg:grid-cols-4">
   <div class="col-span-1 lg:col-span-2">
-    <div class="grid grid-cols-1 lg:grid-cols-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       @for (item of cards; track $index) {
       <div class="col-span-1 lg:col-span-2">
         <div [ngClass]="['flex flex-col px-3 py-3 mx-3 my-3', item.bg]">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="col-span-1 md:col-span-1 lg:col-span-2">
-    <div class="grid grid-cols-1 lg:grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
       <div class="col-span-1">
         <app-home-pie-chart />
       </div>

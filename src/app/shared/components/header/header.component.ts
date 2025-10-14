@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBars, faChevronDown, faGlobe, faIndent, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons';
+import { SidebarStore } from '../../services/sidebar-store.service';
 
 @Component({
   selector: 'app-header',
@@ -18,4 +19,7 @@ export class HeaderComponent {
     down: faChevronDown,
     ident: faIndent
   }
+
+
+  constructor(public store: SidebarStore) {}
 }
