@@ -10,6 +10,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { HomeHeaderComponent } from '../../components/home-header/home-header.component';
 import { NgClass } from '@angular/common';
+import { HomePieChartComponent } from "../../components/home-pie-chart/home-pie-chart.component";
+import { HomeGaugeChartComponent } from "../../components/home-gauge-chart/home-gauge-chart.component";
 
 interface Cards {
   title: string;
@@ -20,7 +22,7 @@ interface Cards {
 
 @Component({
   selector: 'app-home-page',
-  imports: [FontAwesomeModule, HomeHeaderComponent, NgClass],
+  imports: [FontAwesomeModule, HomeHeaderComponent, NgClass, HomePieChartComponent, HomeGaugeChartComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })

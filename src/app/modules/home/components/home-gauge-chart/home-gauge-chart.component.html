@@ -1,0 +1,22 @@
+<div id="chart" class="px-3 py-3 mx-3 my-3 bg-zinc-50">
+  <div class="relative flex flex-col justify-center items-center">
+    <apx-chart
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [plotOptions]="chartOptions.plotOptions!"
+      [fill]="chartOptions.fill!"
+      [labels]="chartOptions.labels!"
+    ></apx-chart>
+
+    <!-- Ponteiro -->
+    <!-- <div
+      class="absolute w-1 h-16 bg-red-500 origin-bottom rounded"
+      [style.transform]="'rotate(' + rotationAngle + 'deg)'"
+    ></div> -->
+    <div class="flex justify-between w-full">
+      <h1 class="text-2xl text-teal-400">121</h1>
+      <h1 class="text-2xl">200</h1>
+    </div>
+  </div>
+
+</div>
