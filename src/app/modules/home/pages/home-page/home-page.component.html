@@ -57,6 +57,7 @@
 
         <div class="flex">
           <button
+          (click)="onHandleVisibility({ type: 'last' })"
             class="hover:bg-green-100 rounded cursor-pointer px-1 py-1 mx-2"
           >
             <fa-icon [icon]="icons.down" />
@@ -68,7 +69,7 @@
         </div>
       </div>
       @for (item of lastSupervisions; track $index) {
-      <app-home-supervision-card [data]="item" />
+      <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowLast }"/>
       }
     </div>
   </div>
@@ -81,6 +82,7 @@
 
         <div class="flex">
           <button
+          (click)="onHandleVisibility({ type: 'next' })"
             class="hover:bg-teal-100 rounded cursor-pointer px-1 py-1 mx-2"
           >
             <fa-icon [icon]="icons.down" />
@@ -91,8 +93,9 @@
           </button>
         </div>
       </div>
+
       @for (item of nextSupervisions; track $index) {
-      <app-home-supervision-card [data]="item" />
+      <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowNext }" />
       }
     </div>
   </div>

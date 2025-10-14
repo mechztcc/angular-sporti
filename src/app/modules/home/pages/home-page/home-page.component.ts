@@ -24,6 +24,10 @@ interface Cards {
   bg: string;
 }
 
+interface Visibility {
+  type: 'last' | 'next';
+}
+
 @Component({
   selector: 'app-home-page',
   imports: [
@@ -41,8 +45,11 @@ export class HomePageComponent {
   icons: any = {
     calendar: faCalendar,
     close: faClose,
-    down: faChevronDown
+    down: faChevronDown,
   };
+
+  isShowNext: boolean = true;
+  isShowLast: boolean = true;
 
   cards: Cards[] = [
     {
@@ -122,4 +129,13 @@ export class HomePageComponent {
       type: 'Postura',
     },
   ];
+
+  onHandleVisibility({ type }: Visibility) {
+    if (type == 'last') {
+      this.isShowLast = !this.isShowLast;
+      return;
+    }
+
+    this.isShowNext = !this.isShowNext;
+  }
 }
