@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faCalendar,
   faChartArea,
   faChartSimple,
   faChevronDown,
+  faChevronUp,
+  faCircleNotch,
   faClose,
   faEnvelope,
   faUser,
@@ -16,6 +18,7 @@ import { HomePieChartComponent } from '../../components/home-pie-chart/home-pie-
 import { HomeGaugeChartComponent } from '../../components/home-gauge-chart/home-gauge-chart.component';
 import { HomeSupervisionCardComponent } from '../../components/home-supervision-card/home-supervision-card.component';
 import { ISupervision } from '../../shared/interfaces/supervision.interface';
+import { HomeStore } from '../../shared/stores/home-store.service';
 
 interface Cards {
   title: string;
@@ -41,11 +44,13 @@ interface Visibility {
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
   icons: any = {
     calendar: faCalendar,
     close: faClose,
     down: faChevronDown,
+    up: faChevronUp,
+    load: faCircleNotch
   };
 
   isShowNext: boolean = true;
@@ -78,57 +83,11 @@ export class HomePageComponent {
     },
   ];
 
-  lastSupervisions: ISupervision[] = [
-    {
-      city: 'Recife',
-      state: 'PE',
-      dateVisit: new Date().toISOString(),
-      name: 'Academia da superação e vitória',
-      owner: 'Alberto paiva',
-      region: '#01',
-      status: 'Concluída',
-      statusId: 3,
-      type: 'Postura',
-    },
+  constructor(public store: HomeStore) {}
 
-    {
-      city: 'Recife',
-      state: 'PE',
-      dateVisit: new Date().toISOString(),
-      name: 'Academia da superação e vitória',
-      owner: 'Alberto paiva',
-      region: '#01',
-      status: 'Concluída',
-      statusId: 3,
-      type: 'Postura',
-    },
-  ];
-
-  nextSupervisions: ISupervision[] = [
-    {
-      city: 'Recife',
-      state: 'PE',
-      dateVisit: new Date().toISOString(),
-      name: 'Academia da superação e vitória',
-      owner: 'Alberto paiva',
-      region: '#01',
-      status: 'Agendada',
-      statusId: 1,
-      type: 'Postura',
-    },
-
-    {
-      city: 'Recife',
-      state: 'PE',
-      dateVisit: new Date().toISOString(),
-      name: 'Academia da superação e vitória',
-      owner: 'Alberto paiva',
-      region: '#01',
-      status: 'Agendada',
-      statusId: 1,
-      type: 'Postura',
-    },
-  ];
+  ngOnInit(): void {
+    this.store.onList();
+  }
 
   onHandleVisibility({ type }: Visibility) {
     if (type == 'last') {

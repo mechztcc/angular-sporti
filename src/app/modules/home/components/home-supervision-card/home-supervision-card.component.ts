@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { ISupervision } from '../../shared/interfaces/supervision.interface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCalendar, faClock, faLocationDot, faMagnifyingGlass, faMapLocation, faPen, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCircleNotch, faClock, faLocationDot, faMagnifyingGlass, faMapLocation, faPen, faUser } from '@fortawesome/free-solid-svg-icons';
 import { DatePipe, NgClass } from '@angular/common';
 
 @Component({
@@ -18,7 +18,8 @@ export class HomeSupervisionCardComponent {
     map: faMapLocation,
     pen: faPen,
     location: faLocationDot,
-    clock: faClock
+    clock: faClock,
+    load: faCircleNotch
   };
   data = input<ISupervision>();
 }

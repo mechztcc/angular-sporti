@@ -60,7 +60,7 @@
           (click)="onHandleVisibility({ type: 'last' })"
             class="hover:bg-green-100 rounded cursor-pointer px-1 py-1 mx-2"
           >
-            <fa-icon [icon]="icons.down" />
+            <fa-icon [icon]="isShowLast ? icons.down : icons.up" />
           </button>
 
           <button class="hover:bg-green-100 rounded cursor-pointer px-2 py-1">
@@ -68,7 +68,7 @@
           </button>
         </div>
       </div>
-      @for (item of lastSupervisions; track $index) {
+      @for (item of store.state.lastSupervisions(); track $index) {
       <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowLast }"/>
       }
     </div>
@@ -85,7 +85,11 @@
           (click)="onHandleVisibility({ type: 'next' })"
             class="hover:bg-teal-100 rounded cursor-pointer px-1 py-1 mx-2"
           >
-            <fa-icon [icon]="icons.down" />
+            <fa-icon [icon]="isShowNext ? icons.down : icons.up" />
+          </button>
+
+          <button class="hover:bg-teal-100 rounded cursor-pointer px-2 py-1" (click)="store.onList()">
+            <fa-icon [icon]="icons.load" />
           </button>
 
           <button class="hover:bg-teal-100 rounded cursor-pointer px-2 py-1">
@@ -94,9 +98,26 @@
         </div>
       </div>
 
-      @for (item of nextSupervisions; track $index) {
-      <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowNext }" />
+      @if(store.state.isLoading) {
+        <div class="flex flex-col items-center justify-center my-4">
+          <fa-icon [icon]="icons.load" />
+          <span class="text-center text-zinc-700">Buscando informações...</span>
+        </div>
       }
+
+      @if(!store.state.hasNextSupervisions) {
+        <div class="flex flex-col items-center justify-center my-4">
+          <span class="text-center text-zinc-700">Nenhuma informação encontrada...</span>
+        </div>
+      }
+
+      @if(!store.state.isLoading && store.state.hasNextSupervisions) {
+        @for (item of store.state.nextSupervisions(); track $index) {
+          <app-home-supervision-card [data]="item" [ngClass]="{ 'hidden': !isShowNext }" />
+        }
+      }
+
+      
     </div>
   </div>
 </div>

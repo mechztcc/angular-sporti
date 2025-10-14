@@ -1,0 +1,72 @@
+{
+  "lastSupervisions": [
+    {
+      "city": "Recife",
+      "state": "PE",
+      "dateVisit": "2025-09-10T10:00:00.000Z",
+      "name": "Academia da Superação e Vitória",
+      "owner": "Alberto Paiva",
+      "region": "#01",
+      "status": "Concluída",
+      "statusId": 3,
+      "type": "Postura"
+    },
+    {
+      "city": "Olinda",
+      "state": "PE",
+      "dateVisit": "2025-09-12T14:30:00.000Z",
+      "name": "Centro de Treinamento Vitória",
+      "owner": "Carla Souza",
+      "region": "#02",
+      "status": "Concluída",
+      "statusId": 3,
+      "type": "Segurança"
+    },
+    {
+      "city": "Jaboatão",
+      "state": "PE",
+      "dateVisit": "2025-09-15T09:00:00.000Z",
+      "name": "Escola da Vida Ativa",
+      "owner": "João Lima",
+      "region": "#03",
+      "status": "Concluída",
+      "statusId": 3,
+      "type": "Postura"
+    }
+  ],
+  "nextSupervisions": [
+    {
+      "city": "Recife",
+      "state": "PE",
+      "dateVisit": "2025-10-20T11:00:00.000Z",
+      "name": "Academia da Superação e Vitória",
+      "owner": "Alberto Paiva",
+      "region": "#01",
+      "status": "Agendada",
+      "statusId": 1,
+      "type": "Postura"
+    },
+    {
+      "city": "Olinda",
+      "state": "PE",
+      "dateVisit": "2025-10-22T15:30:00.000Z",
+      "name": "Centro de Treinamento Vitória",
+      "owner": "Carla Souza",
+      "region": "#02",
+      "status": "Agendada",
+      "statusId": 1,
+      "type": "Segurança"
+    },
+    {
+      "city": "Jaboatão",
+      "state": "PE",
+      "dateVisit": "2025-10-25T09:00:00.000Z",
+      "name": "Escola da Vida Ativa",
+      "owner": "João Lima",
+      "region": "#03",
+      "status": "Agendada",
+      "statusId": 1,
+      "type": "Postura"
+    }
+  ]
+}

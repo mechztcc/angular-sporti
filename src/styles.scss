@@ -3,17 +3,16 @@
 @import "tailwindcss";
 
 * {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
-
 .flatpickr-day.selected {
-  background-color: oklch(21% 0.006 285.885) !important;
-  border-color: oklch(21% 0.006 285.885) !important;
+  background-color: oklch(77.7% 0.152 181.912) !important;
+  border-color: oklch(77.7% 0.152 181.912) !important;
 }
 
 .flatpickr-day.endRange:hover,
 .flatpickr-day.endRange {
-  background-color: oklch(21% 0.006 285.885) !important;
-  border-color: oklch(21% 0.006 285.885) !important;
+  background-color: oklch(77.7% 0.152 181.912) !important;
+  border-color: oklch(77.7% 0.152 181.912) !important;
 }
