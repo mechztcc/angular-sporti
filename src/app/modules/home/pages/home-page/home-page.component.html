@@ -1,2 +1,34 @@
 <app-home-header />
 
+<div class="grid grid-cols-1 lg:grid-cols-4">
+  @for (item of cards; track $index) {
+  <div class="col-span-1">
+    <div [ngClass]="['flex flex-col px-3 py-3 mx-3 my-3', item.bg]">
+      <fa-icon
+        [icon]="item.icon"
+        [ngClass]="{
+          'text-zinc-50': item.bg != 'bg-zinc-50',
+          'text-zinc-500': item.bg == 'bg-zinc-50'
+        }"
+      />
+      <h1
+        [ngClass]="{
+					'text-center text-2xl': true,
+          'text-zinc-50': item.bg != 'bg-zinc-50',
+          'text-zinc-500': item.bg == 'bg-zinc-50'
+        }"
+      >
+        {{ item.value }}
+      </h1>
+      <span
+        [ngClass]="{
+					'text-center': true,
+          'text-zinc-50': item.bg != 'bg-zinc-50',
+          'text-zinc-500': item.bg == 'bg-zinc-50'
+        }"
+        >{{ item.title }}</span
+      >
+    </div>
+  </div>
+  }
+</div>
