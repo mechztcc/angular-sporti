@@ -14,9 +14,17 @@ RUN npm run build --prod
 # Etapa 2: servidor Nginx
 FROM nginx:alpine
 
-# Copia os arquivos buildados para o Nginx
-COPY --from=builder /app/dist/sporti-angular /usr/share/nginx/html
+# Remove página padrão do Nginx
+RUN rm -rf /usr/share/nginx/html/*
 
+# Copia build do Angular
+COPY --from=builder /app/dist/sporti-angular/browser /usr/share/nginx/html
+
+# Copia configuração customizada do Nginx (opcional)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expõe porta 80
 EXPOSE 80
 
+# Inicia Nginx
 CMD ["nginx", "-g", "daemon off;"]

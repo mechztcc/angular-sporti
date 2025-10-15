@@ -1,59 +1,125 @@
-# SportiAngular
+# Sporti Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+Aplicação frontend em **Angular 20**, servida via **Nginx** dentro de Docker.  
+A aplicação gerencia supervisões e exibe dashboards com gráficos interativos.
 
-## Development server
+---
 
-To start a local development server, run:
+## Tecnologias
 
-```bash
-ng serve
-```
+- Angular 20  
+- TypeScript  
+- Tailwind CSS  
+- ApexCharts  
+- Nginx  
+- Docker / Docker Compose
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Pré-requisitos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js 20 ou superior  
+- npm 9 ou superior  
+- Docker & Docker Compose  
+- Git (opcional para clonar o repositório)
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Setup Local (Desenvolvimento)
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+1. Clone o repositório:
 
 ```bash
-ng test
+git clone <URL_DO_REPOSITORIO>
+cd sporti-angular
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+2. Instale as dependências:
 
 ```bash
-ng e2e
+npm install
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+3. Rodar o servidor de desenvolvimento Angular:
 
-## Additional Resources
+```bash
+npm start
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> A aplicação estará disponível em [http://localhost:4200](http://localhost:4200)
+
+---
+
+## Build de Produção
+
+Para gerar os arquivos de produção:
+
+```bash
+npm run build --prod
+```
+
+O build será gerado em:
+
+```
+dist/sporti-angular/browser
+```
+
+---
+
+## Docker (Produção)
+
+### Build da imagem
+
+```bash
+docker-compose build
+```
+
+### Subir o container
+
+```bash
+docker-compose up -d
+```
+
+### Parar o container
+
+```bash
+docker-compose down
+```
+
+A aplicação estará disponível em [http://localhost:4200](http://localhost:4200)
+
+---
+
+## Estrutura do Projeto
+
+```
+sporti-angular/
+├─ src/
+│  ├─ app/
+│  │  ├─ components/
+│  │  ├─ pages/
+│  │  └─ services/
+│  └─ styles.scss
+├─ dist/
+│  └─ sporti-angular/
+│     └─ browser/
+├─ Dockerfile
+├─ docker-compose.yml
+├─ package.json
+└─ README.md
+```
+
+---
+
+## Observações
+
+- O build moderno do Angular 20 coloca os arquivos finais dentro de `dist/sporti-angular/browser`.  
+- O Dockerfile usa **multi-stage build** para compilar a aplicação e servir com Nginx.  
+- Para desenvolvimento com live reload, use `npm start` sem Docker.  
+
+---
+
+## Autor
+
+**Alberto Paiva**
+
