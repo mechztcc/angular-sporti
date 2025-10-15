@@ -1,13 +1,16 @@
 # Sporti Angular App
 
-Aplicação frontend em **Angular 20**, servida via **Nginx** dentro de Docker.  
+Aplicação frontend em **Angular 19.2**, servida via **Nginx** dentro de Docker.  
 A aplicação gerencia supervisões e exibe dashboards com gráficos interativos.
+
+![Angular](https://img.shields.io/badge/Angular-19.2-red?style=for-the-badge&logo=angular&logoColor=white)
+
 
 ---
 
 ## Tecnologias
 
-- Angular 20  
+- Angular 19.2  
 - TypeScript  
 - Tailwind CSS  
 - ApexCharts  
@@ -113,7 +116,7 @@ sporti-angular/
 
 ## Observações
 
-- O build moderno do Angular 20 coloca os arquivos finais dentro de `dist/sporti-angular/browser`.  
+- O build moderno do Angular 19.2 coloca os arquivos finais dentro de `dist/sporti-angular/browser`.  
 - O Dockerfile usa **multi-stage build** para compilar a aplicação e servir com Nginx.  
 - Para desenvolvimento com live reload, use `npm start` sem Docker.  
 
