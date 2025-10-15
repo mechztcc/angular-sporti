@@ -37,6 +37,7 @@ export class HomeGaugeChartComponent {
       series: [50],
       chart: {
         type: 'radialBar',
+        height: 300,
         offsetY: -20,
         toolbar: {
           show: true, 

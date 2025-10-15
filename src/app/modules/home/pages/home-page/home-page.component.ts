@@ -20,6 +20,8 @@ import { HomeSupervisionCardComponent } from '../../components/home-supervision-
 import { ISupervision } from '../../shared/interfaces/supervision.interface';
 import { HomeStore } from '../../shared/stores/home-store.service';
 import { TooltipButtonComponent } from '../../../../shared/components/tooltip-button/tooltip-button.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalConfirmComponent } from '../../../../shared/components/modal-confirm/modal-confirm.component';
 
 interface Cards {
   title: string;
@@ -41,7 +43,9 @@ interface Visibility {
     HomePieChartComponent,
     HomeGaugeChartComponent,
     HomeSupervisionCardComponent,
-    TooltipButtonComponent
+    TooltipButtonComponent,
+    NgxPaginationModule,
+    ModalConfirmComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
@@ -57,6 +61,8 @@ export class HomePageComponent implements OnInit {
 
   isShowNext: boolean = true;
   isShowLast: boolean = true;
+  paginatorLast: any;
+  paginatorNext: any;
 
   cards: Cards[] = [
     {

@@ -22,7 +22,20 @@ export class HomeService {
 
   onListSupervisions(): Observable<IListSupervisionsResponse> {
     const randomDelay = Math.floor(Math.random() * 4000) + 1000;
-
     return of({ lastSupervisions, nextSupervisions }).pipe(delay(randomDelay));
   }
+
+  onUpdate(payload: ISupervision): Observable<ISupervision> {
+  const list = payload.statusId === 3 ? lastSupervisions : nextSupervisions;
+  const index = list.findIndex((el) => el.id === payload.id);
+
+  if (index !== -1) {
+    list[index] = {
+      ...list[index],
+      ...payload,
+    };
+  }
+
+  return of(list[index]);
+}
 }

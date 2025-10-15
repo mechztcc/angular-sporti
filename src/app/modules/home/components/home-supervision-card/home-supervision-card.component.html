@@ -69,14 +69,6 @@
   </div>
 
   <div class="flex w-full justify-end mt-3">
-    <button
-      [ngClass]="{
-				'px-3 py-2 cursor-pointer': true,
-				'bg-teal-200 hover:bg-teal-400 hover:text-zinc-50': data()?.statusId == 1,
-				'bg-green-200 hover:bg-green-400 hover:text-zinc-50 ': data()?.statusId == 3,
-			}"
-    >
-      Acessar
-    </button>
+    <app-modal-edit-supervision [data]="data()" />
   </div>
 </div>

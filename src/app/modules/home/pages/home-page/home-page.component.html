@@ -68,21 +68,21 @@
             <fa-icon [icon]="icons.load" />
           </app-tooltip-button>
 
-          <app-tooltip-button [label]="'Fechar'">
+          <app-modal-confirm [data]="{ source: 'Supervisão'}"> 
             <fa-icon [icon]="icons.close" />
-          </app-tooltip-button>
+          </app-modal-confirm>
         </div>
       </div>
 
 
       @if(store.state.isLoading) {
       <div class="flex flex-col items-center justify-center my-4">
-        <fa-icon [icon]="icons.load" />
+        <fa-icon [icon]="icons.load" class="spin" />
         <span class="text-center text-zinc-700">Buscando informações...</span>
       </div>
       } 
       
-      @if(!store.state.hasLastSupervisions) {
+      @if(!store.state.hasLastSupervisions && !store.state.isLoading) {
       <div class="flex flex-col items-center justify-center my-4">
         <span class="text-center text-zinc-700">
           Nenhuma informação encontrada...
@@ -91,16 +91,17 @@
       } 
 
       @if(!store.state.isLoading && store.state.hasLastSupervisions) { 
-        @for (item of store.state.lastSupervisions(); track $index) {
+        @for (item of store.state.lastSupervisions() | paginate: { id: 'lastSupervisions', itemsPerPage: 3, currentPage: paginatorLast }; track $index) {
           <app-home-supervision-card
             [data]="item"
             [ngClass]="{ hidden: !isShowLast }"
           />
         }
+
+        <div class="flex flex-wrap justify-end my-5">
+          <pagination-controls (pageChange)="paginatorLast = $event" id="lastSupervisions" [previousLabel]="'Anterior'" [nextLabel]="'Próximo'" />
+        </div>
       }
-
-
-
     </div>
   </div>
 
@@ -121,20 +122,20 @@
             <fa-icon [icon]="icons.load" />
           </app-tooltip-button>
 
-          <app-tooltip-button [label]="'Fechar'">
+          <app-modal-confirm [data]="{ source: 'Supervisão'}"> 
             <fa-icon [icon]="icons.close" />
-          </app-tooltip-button>
+          </app-modal-confirm>
         </div>
       </div>
 
       @if(store.state.isLoading) {
       <div class="flex flex-col items-center justify-center my-4">
-        <fa-icon [icon]="icons.load" />
+        <fa-icon [icon]="icons.load" class="spin"/>
         <span class="text-center text-zinc-700">Buscando informações...</span>
       </div>
       } 
       
-      @if(!store.state.hasNextSupervisions) {
+      @if(!store.state.hasNextSupervisions && !store.state.isLoading) {
       <div class="flex flex-col items-center justify-center my-4">
         <span class="text-center text-zinc-700">
           Nenhuma informação encontrada...
@@ -143,12 +144,16 @@
       } 
 
       @if(!store.state.isLoading && store.state.hasNextSupervisions) { 
-        @for(item of store.state.nextSupervisions(); track $index) {
+        @for(item of store.state.nextSupervisions() | paginate: { id: 'nextSupervisions', itemsPerPage: 3, currentPage: paginatorNext }; track $index) {
           <app-home-supervision-card
             [data]="item"
             [ngClass]="{ hidden: !isShowNext }"
           />
         } 
+
+        <div class="flex flex-wrap justify-end my-5">
+          <pagination-controls (pageChange)="paginatorNext = $event" id="nextSupervisions" [previousLabel]="'Anterior'" [nextLabel]="'Próximo'" />
+        </div>
       }
     </div>
   </div>

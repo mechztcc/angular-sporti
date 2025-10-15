@@ -8,5 +8,5 @@ export interface ISupervision {
   type: string;
   status: string;
   statusId: number;
-  
+  id: number;
 }

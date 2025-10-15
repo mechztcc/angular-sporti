@@ -28,7 +28,8 @@
     "angularx-flatpickr": "^8.1.0",
     "flatpickr": "^4.6.13",
     "apexcharts": "^5.3.3",
-    "ng-apexcharts": "1.15"
+    "ng-apexcharts": "1.15",
+    "ngx-pagination": "^6.0.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^19.2.13",

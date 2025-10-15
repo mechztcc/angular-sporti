@@ -29,6 +29,7 @@ export class HomePieChartComponent {
       series: [44, 55, 13],
       chart: {
         type: 'donut',
+        height: 300,
         toolbar: {
           show: true, 
           tools: {

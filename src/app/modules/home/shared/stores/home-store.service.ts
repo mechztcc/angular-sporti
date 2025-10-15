@@ -40,6 +40,10 @@ export class HomeStore {
   constructor(private homeService: HomeService) {}
 
   onList() {
+    if(this.state.isLoading) {
+      return
+    }
+    
     this.state.isLoading = true;
     this.homeService.onListSupervisions().subscribe((data) => {
       this.state.lastSupervisions.set(data.lastSupervisions);

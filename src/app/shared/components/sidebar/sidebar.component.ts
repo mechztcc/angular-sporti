@@ -5,6 +5,7 @@ import {
   faCog,
   faCrown,
   faEnvelope,
+  faGlobe,
   faHome,
   faList,
   faMapPin,
@@ -15,11 +16,10 @@ import { InputToggleSwitchComponent } from '../input-toggle-switch/input-toggle-
 import { SidebarStore } from '../../services/sidebar-store.service';
 import { NgClass } from '@angular/common';
 
-
 interface SidebarItem {
   label: string;
   icon: IconDefinition;
-  badge?: string;
+  badge?: string | null;
 }
 
 @Component({
@@ -31,27 +31,35 @@ interface SidebarItem {
 export class SidebarComponent {
   icons: any = {
     profile: faCrown,
+    global: faGlobe
   };
+
+  
   items: SidebarItem[] = [
     {
       label: 'Home',
       icon: faHome,
+      badge: null,
     },
     {
       label: 'Menu 1',
       icon: faChartSimple,
+      badge: null,
     },
     {
       label: 'Menu 2',
       icon: faCog,
+      badge: null,
     },
     {
       label: 'Menu 3',
       icon: faList,
+      badge: null,
     },
     {
       label: 'Menu 4',
       icon: faPenClip,
+      badge: null,
     },
     {
       label: 'Comunicados',
@@ -61,10 +69,9 @@ export class SidebarComponent {
     {
       label: 'Mapas',
       icon: faMapPin,
+      badge: null,
     },
   ];
 
-  constructor(public store: SidebarStore) {
-
-  }
+  constructor(public store: SidebarStore) {}
 }
