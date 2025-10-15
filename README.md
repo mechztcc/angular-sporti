@@ -109,17 +109,28 @@ A aplicação estará disponível em [http://localhost:4200](http://localhost:42
 sporti-angular/
 ├─ src/
 │  ├─ app/
-│  │  ├─ components/
-│  │  ├─ pages/
-│  │  └─ services/
+│  │  ├─ shared/
+│  │  │  └─ components/   
+│  │  │  └─ services/   
+│  │  │  └─ stores/   
+│  │  │  └─ mocks/   
+│  │  ├─ modules/
+│  │  │  └─ home/                  # Módulo Home
+│  │  │     ├─ components/          # Componentes específicos do módulo
+│  │  │     ├─ pages/               # Páginas específicas do módulo
+│  │  │     └─ shared/              # Shared dentro do módulo (interfaces, services, stores)
+|  │  │  │     ├─ interfaces/               
+|  │  │  │     ├─ services/              
+|  │  │  │     ├─ stores/               
 │  └─ styles.scss
 ├─ dist/
 │  └─ sporti-angular/
-│     └─ browser/
+│     └─ browser/                   # Build de produção
 ├─ Dockerfile
 ├─ docker-compose.yml
 ├─ package.json
 └─ README.md
+
 ```
 
 ---
