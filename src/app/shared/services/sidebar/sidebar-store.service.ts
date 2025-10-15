@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '../interfaces/store.interface';
+import { Store } from '../../interfaces/store.interface';
 
 interface State {
   isOpened: boolean;

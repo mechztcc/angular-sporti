@@ -1,0 +1,26 @@
+<div [ngClass]="['flex flex-col px-3 py-3 mx-3 my-3', data()?.bg]">
+  <fa-icon
+    [icon]="data()!.icon"
+    [ngClass]="{
+      'text-zinc-50': data()?.bg != 'bg-zinc-50',
+      'text-zinc-500': data()?.bg == 'bg-zinc-50'
+    }"
+  />
+  <h1
+    [ngClass]="{
+      'text-center text-2xl': true,
+      'text-zinc-50': data()?.bg != 'bg-zinc-50',
+      'text-zinc-500': data()?.bg == 'bg-zinc-50'
+    }"
+  >
+    {{ data()?.value }}
+  </h1>
+  <span
+    [ngClass]="{
+      'text-center': true,
+      'text-zinc-50': data()?.bg != 'bg-zinc-50',
+      'text-zinc-500': data()?.bg == 'bg-zinc-50'
+    }"
+    >{{ data()?.title }}</span
+  >
+</div>

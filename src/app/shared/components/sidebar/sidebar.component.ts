@@ -13,7 +13,7 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { InputToggleSwitchComponent } from '../input-toggle-switch/input-toggle-switch.component';
-import { SidebarStore } from '../../services/sidebar-store.service';
+import { SidebarStore } from '../../services/sidebar/sidebar-store.service';
 import { NgClass } from '@angular/common';
 
 interface SidebarItem {

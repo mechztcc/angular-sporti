@@ -5,32 +5,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
       @for (item of cards; track $index) {
       <div class="col-span-1 lg:col-span-2">
-        <div [ngClass]="['flex flex-col px-3 py-3 mx-3 my-3', item.bg]">
-          <fa-icon
-            [icon]="item.icon"
-            [ngClass]="{
-              'text-zinc-50': item.bg != 'bg-zinc-50',
-              'text-zinc-500': item.bg == 'bg-zinc-50'
-            }"
-          />
-          <h1
-            [ngClass]="{
-              'text-center text-2xl': true,
-              'text-zinc-50': item.bg != 'bg-zinc-50',
-              'text-zinc-500': item.bg == 'bg-zinc-50'
-            }"
-          >
-            {{ item.value }}
-          </h1>
-          <span
-            [ngClass]="{
-              'text-center': true,
-              'text-zinc-50': item.bg != 'bg-zinc-50',
-              'text-zinc-500': item.bg == 'bg-zinc-50'
-            }"
-            >{{ item.title }}</span
-          >
-        </div>
+        <app-card-kpi [data]="item" />
       </div>
       }
     </div>
@@ -53,7 +28,7 @@
   <div class="col-span-1">
     <div class="flex flex-col bg-zinc-50 mx-3 my-3">
       <div class="flex justify-between bg-green-200 px-3 py-1">
-        <h2 class="text-xl text-green-600">Suas ultimas fiscalizações</h2>
+        <h2 class="text-xl text-green-600">Suas últimas fiscalizações</h2>
 
 
         <div class="flex">

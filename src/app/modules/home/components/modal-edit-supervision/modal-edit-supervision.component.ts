@@ -12,6 +12,7 @@ import { InputErrorComponent } from '../../../../shared/components/input-error/i
 import { ISupervision } from '../../shared/interfaces/supervision.interface';
 import { HomeService } from '../../shared/services/home.service';
 import { HomeStore } from '../../shared/stores/home-store.service';
+import { ToasterService } from '../../../../shared/services/toastr/toaster.service';
 
 @Component({
   selector: 'app-modal-edit-supervision',
@@ -39,7 +40,8 @@ export class ModalEditSupervisionComponent implements OnChanges {
   constructor(
     private fb: FormBuilder,
     private homeService: HomeService,
-    private store: HomeStore
+    private store: HomeStore,
+    private toastr: ToasterService
   ) {
     this.form = this.fb.group({
       city: ['', Validators.required],
@@ -70,15 +72,15 @@ export class ModalEditSupervisionComponent implements OnChanges {
 
   onSubmit() {
     if (this.form.invalid) {
+      // this.toastr.onHandle('Formulário inválido', 'error');
       return;
     }
 
     this.homeService
       .onUpdate(this.form.value)
-      .subscribe((data) => {
-        console.log(data);
-      })
+      .subscribe((data) => {})
       .add(() => {
+        this.toastr.onHandle('Informações atualizadas com sucesso!', 'success');
         this.store.onList();
       });
   }

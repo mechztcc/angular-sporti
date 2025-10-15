@@ -22,13 +22,10 @@ import { HomeStore } from '../../shared/stores/home-store.service';
 import { TooltipButtonComponent } from '../../../../shared/components/tooltip-button/tooltip-button.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalConfirmComponent } from '../../../../shared/components/modal-confirm/modal-confirm.component';
+import { CardKpiComponent } from "../../components/card-kpi/card-kpi.component";
+import { Card } from '../../shared/interfaces/card.interface';
 
-interface Cards {
-  title: string;
-  value: number;
-  icon: IconDefinition;
-  bg: string;
-}
+
 
 interface Visibility {
   type: 'last' | 'next';
@@ -45,8 +42,9 @@ interface Visibility {
     HomeSupervisionCardComponent,
     TooltipButtonComponent,
     NgxPaginationModule,
-    ModalConfirmComponent
-  ],
+    ModalConfirmComponent,
+    CardKpiComponent
+],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -64,7 +62,7 @@ export class HomePageComponent implements OnInit {
   paginatorLast: any;
   paginatorNext: any;
 
-  cards: Cards[] = [
+  cards: Card[] = [
     {
       title: 'Realizadas',
       value: 1.728,
