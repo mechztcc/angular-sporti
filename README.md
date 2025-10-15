@@ -103,6 +103,14 @@ A aplicação estará disponível em [http://localhost:4200](http://localhost:42
 
 ---
 
+## Deploy no Azure DevOps
+
+### Fluxo de Build e Release
+
+- Build Pipeline: compila Angular, cria a imagem Docker e envia para o Azure Container Registry (ACR).
+- Release Pipeline: pega a imagem do ACR e faz deploy no Azure Web App ou AKS.
+- Verificar o arquivo azure-pipelines.yml
+
 ## Estrutura do Projeto
 
 ```
