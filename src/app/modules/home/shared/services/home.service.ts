@@ -12,6 +12,8 @@ import {
   providedIn: 'root',
 })
 export class HomeService {
+  private url: string = 'algo que venha do environments';
+
   private lastSupervisions: ISupervision[] = [];
   private nextSupervisions: ISupervision[] = [];
 
@@ -26,16 +28,36 @@ export class HomeService {
   }
 
   onUpdate(payload: ISupervision): Observable<ISupervision> {
-  const list = payload.statusId === 3 ? lastSupervisions : nextSupervisions;
-  const index = list.findIndex((el) => el.id === payload.id);
+    const list = payload.statusId === 3 ? lastSupervisions : nextSupervisions;
+    const index = list.findIndex((el) => el.id === payload.id);
 
-  if (index !== -1) {
-    list[index] = {
-      ...list[index],
-      ...payload,
-    };
+    if (index !== -1) {
+      list[index] = {
+        ...list[index],
+        ...payload,
+      };
+    }
+
+    return of(list[index]);
   }
 
-  return of(list[index]);
-}
+  onRemoveAll(type: 'last' | 'next'): Observable<ISupervision[]> {
+    if (type === 'last') {
+      this.lastSupervisions = [];
+      return of([]);
+    } else {
+      this.nextSupervisions = [];
+      return of([]);
+    }
+  }
+
+  onRemoveAllFromApi(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.url}/${id}`);
+  }
+
+  onUpdateToApi(payload: ISupervision): Observable<ISupervision> {
+    return this.http.post<any>(`${this.url}/${payload.id}`, payload);
+  }
+
+  
 }
