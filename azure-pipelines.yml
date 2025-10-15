@@ -1,0 +1,74 @@
+# azure-pipelines.yml
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+variables:
+  # Nome da imagem Docker
+  imageName: sporti-angular
+  # Nome do Azure Container Registry (substitua pelo seu)
+  acrName: <SEU_ACR>.azurecr.io
+  # Tag da imagem
+  imageTag: $(Build.BuildId)
+
+stages:
+  - stage: Build
+    displayName: 'Build Angular & Docker'
+    jobs:
+      - job: BuildJob
+        displayName: 'Build Angular and Docker Image'
+        pool:
+          vmImage: 'ubuntu-latest'
+
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              npm install -g @angular/cli
+              npm install
+            displayName: 'Install dependencies'
+
+          - script: |
+              ng build --prod
+            displayName: 'Build Angular App'
+
+          - task: Docker@2
+            displayName: 'Build Docker Image'
+            inputs:
+              command: build
+              Dockerfile: 'Dockerfile'
+              tags: '$(acrName)/$(imageName):$(imageTag)'
+              containerRegistry: '<SEU_ACR_SERVICE_CONNECTION>'
+
+          - task: Docker@2
+            displayName: 'Push Docker Image to ACR'
+            inputs:
+              command: push
+              tags: '$(acrName)/$(imageName):$(imageTag)'
+              containerRegistry: '<SEU_ACR_SERVICE_CONNECTION>'
+
+  - stage: Deploy
+    displayName: 'Deploy to Azure Web App'
+    dependsOn: Build
+    jobs:
+      - deployment: DeployJob
+        displayName: 'Deploy Docker Image'
+        environment: 'production' # Pode criar múltiplos ambientes (staging, prod)
+        pool:
+          vmImage: 'ubuntu-latest'
+
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebAppContainer@2
+                  displayName: 'Deploy to Azure Web App for Containers'
+                  inputs:
+                    azureSubscription: '<SEU_AZURE_SERVICE_CONNECTION>'
+                    appName: '<SEU_APP_NAME>'
+                    containers: '$(acrName)/$(imageName):$(imageTag)'
