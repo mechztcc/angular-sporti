@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faChartSimple,
@@ -29,6 +29,11 @@ interface SidebarItem {
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.store.checkWindowSize(event.target.innerWidth);
+  }
+
   icons: any = {
     profile: faCrown,
     global: faGlobe
